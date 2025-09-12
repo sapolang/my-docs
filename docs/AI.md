@@ -34,17 +34,7 @@
 - 阿里巴巴的大语言模型
 - 支持中文对话和理解
 
-## 🎨 AI 应用工具
 
-### 🖼️ 图像处理
-- [换脸工具](https://faceswapper.ai/) - 在线AI换脸工具
-- [HivisionIDPhotos](https://ai-bot.cn/hivisionidphotos/) - 免费开源AI证件照制作
-- [文生图](https://4o-image.com/) - AI文本生成图像工具
-- [背景移除](https://remove.photos/remove-background) - 免费在线背景移除工具
-- [图片加水印](https://phototool.cn/watermark/) - 在线图像工具箱
-
-### 🎥 音视频处理
-- [视频翻译配音](https://pyvideotrans.com/) - AI视频翻译配音工具
 
 ## 🛠️ AI 开发工具
 
@@ -76,16 +66,3 @@
 - GPT4.0 API KEY 中转服务
 - ChatGPT API 访问解决方案
 
-### [接码平台](https://sms-activate.org/)
-- 在线短信接收服务
-- 支持多国号码验证
-
-## 📰 AI 资讯
-
-
-
-## 📄 文档处理
-
-### [PDF-MinerU](https://mineru.net/)
-- 高质量PDF数据提取工具
-- 支持文本、表格、图像提取

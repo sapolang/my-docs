@@ -1,0 +1,164 @@
+/**
+ * 自定义样式覆盖
+ * 这些CSS变量可以覆盖默认主题样式
+ */
+
+:root {
+  /* 品牌颜色 */
+  --vp-c-brand-1: #3c8772;
+  --vp-c-brand-2: #299764;
+  --vp-c-brand-3: #30a46c;
+  --vp-c-brand-soft: rgba(60, 135, 114, 0.1);
+  
+  /* 链接颜色 */
+  --vp-c-text-1: rgba(60, 60, 67);
+  --vp-c-text-2: rgba(60, 60, 67, 0.78);
+  --vp-c-text-3: rgba(60, 60, 67, 0.56);
+}
+
+.dark {
+  /* 深色模式颜色 */
+  --vp-c-brand-1: #4ade80;
+  --vp-c-brand-2: #22c55e;
+  --vp-c-brand-3: #16a34a;
+  --vp-c-brand-soft: rgba(74, 222, 128, 0.1);
+}
+
+/**
+ * 自定义组件样式
+ */
+
+/* 首页hero区域优化 */
+.VPHome .VPHero {
+  padding-top: 80px;
+}
+
+.VPHero .name {
+  background: linear-gradient(120deg, #3c8772 30%, #22c55e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 特性卡片样式优化 */
+.VPFeature {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-border);
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--vp-c-brand-1);
+}
+
+/* 导航栏样式 */
+.VPNav {
+  backdrop-filter: blur(10px);
+}
+
+/* 侧边栏优化 */
+.VPSidebar {
+  padding-top: 20px;
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+}
+
+/* 代码块样式优化 */
+.vp-code-group {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 表格样式 */
+.vp-doc table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.vp-doc th {
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+}
+
+/* 自定义容器样式 */
+.custom-block.tip {
+  border-color: var(--vp-c-brand-1);
+}
+
+.custom-block.tip .custom-block-title {
+  color: var(--vp-c-brand-1);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .VPHero .name {
+    font-size: 32px;
+  }
+  
+  .VPHero .text {
+    font-size: 18px;
+  }
+  
+  .VPFeatures {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vp-c-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-text-3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-1);
+}
+
+/* 搜索框样式优化 */
+.DocSearch-Button {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.DocSearch-Button:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.VPFeature {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.VPFeature:nth-child(1) { animation-delay: 0.1s; }
+.VPFeature:nth-child(2) { animation-delay: 0.2s; }
+.VPFeature:nth-child(3) { animation-delay: 0.3s; }
+.VPFeature:nth-child(4) { animation-delay: 0.4s; }
+.VPFeature:nth-child(5) { animation-delay: 0.5s; }
+.VPFeature:nth-child(6) { animation-delay: 0.6s; }

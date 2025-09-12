@@ -1,0 +1,23 @@
+{
+  "name": "my-docs-center",
+  "version": "2.0.0",
+  "description": "基于 VitePress 构建的个人技术文档与学习资源管理系统",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "serve": "vitepress serve"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0"
+  },
+  "keywords": [
+    "documentation",
+    "vitepress",
+    "vue",
+    "markdown",
+    "docs"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

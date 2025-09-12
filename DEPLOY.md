@@ -1,127 +1,140 @@
-# 🚀 GitHub Pages 部署指南
+# VitePress 项目部署指南
 
-## 📋 部署步骤
+## 📋 部署准备
 
-### 1. 创建GitHub仓库
+### 1. 环境要求
+- Node.js 16+ 
+- pnpm (推荐) 或 npm
+- Git
 
-1. 登录 [GitHub](https://github.com)
-2. 点击右上角的 `+` → `New repository`
-3. 填写仓库名称，如：`my-docsify-docs`
-4. 选择 `Public`（免费用户需要公开仓库才能使用GitHub Pages）
-5. 点击 `Create repository`
-
-### 2. 本地Git初始化
-
+### 2. 安装依赖
 ```bash
-# 在docs目录下初始化git仓库
-cd /home/ubu/docs
-git init
-
-# 设置用户信息
-git config user.name "你的用户名"
-git config user.email "你的邮箱"
-
-# 添加远程仓库地址
-git remote add origin https://github.com/你的用户名/仓库名.git
-
-# 创建main分支
-git branch -M main
+pnpm install
 ```
 
-### 3. 首次推送
+## 🚀 本地开发
 
+### 启动开发服务器
 ```bash
-# 添加所有文件
-git add .
-
-# 提交
-git commit -m "Initial commit: Docsify docs site"
-
-# 推送到GitHub
-git push -u origin main
+pnpm run dev
 ```
+访问: `http://localhost:5174`
 
-### 4. 启用GitHub Pages
-
-1. 在GitHub仓库页面，点击 `Settings`
-2. 滚动到 `Pages` 部分
-3. 在 `Source` 下选择 `Deploy from a branch`
-4. 选择 `main` 分支和 `/ (root)` 目录
-5. 点击 `Save`
-
-### 5. 访问站点
-
-约1-2分钟后，你的站点将在以下地址可用：
-```
-https://你的用户名.github.io/仓库名/
-```
-
-## 🔄 日常更新流程
-
-### 方式一：使用部署脚本（推荐）
-
+### 构建生产版本
 ```bash
-# 快速部署
-./deploy.sh "更新文档内容"
+pnpm run build
 ```
 
-### 方式二：手动Git命令
-
+### 预览构建结果
 ```bash
-# 添加更改
-git add .
-
-# 提交更改
-git commit -m "更新说明"
-
-# 推送到GitHub
-git push origin main
+pnpm run preview
 ```
 
-## ⚙️ 自动化部署
+## 🌐 部署选项
 
-项目已配置GitHub Actions自动化部署：
+### GitHub Pages
 
-- 📁 `.github/workflows/deploy.yml` - 自动部署配置
-- 🔄 每次推送到 `main` 分支时自动部署
-- ⚡ 无需手动操作，推送即部署
+1. **自动部署 (推荐)**
+   - 使用 GitHub Actions
+   - 配置文件：`.github/workflows/deploy.yml`
+   - 推送到 main 分支自动触发部署
 
-## 📱 自定义域名（可选）
+2. **手动部署**
+   ```bash
+   # 给部署脚本执行权限
+   chmod +x deploy.sh
+   
+   # 执行部署
+   ./deploy.sh
+   ```
 
-如果你有自己的域名：
+### Netlify
 
-1. 在仓库根目录创建 `CNAME` 文件
-2. 文件内容填写你的域名，如：`docs.yourdomain.com`
-3. 在域名DNS设置中添加CNAME记录指向 `你的用户名.github.io`
+1. 连接 GitHub 仓库
+2. 构建命令：`pnpm run build`
+3. 发布目录：`.vitepress/dist`
+4. Node.js 版本：16+
+
+### Vercel
+
+1. 导入项目到 Vercel
+2. 框架预设：VitePress
+3. 自动检测构建配置
+4. 一键部署
+
+## ⚙️ 配置说明
+
+### 基础路径配置
+
+如果部署到子路径，需要在 `.vitepress/config.js` 中配置：
+
+```js
+export default {
+  base: '/your-repo-name/',
+  // ...
+}
+```
+
+### 域名配置
+
+1. 在 `public` 目录下创建 `CNAME` 文件
+2. 内容为你的域名：`your-domain.com`
+
+### SEO 优化
+
+```js
+export default {
+  head: [
+    ['meta', { name: 'description', content: '网站描述' }],
+    ['meta', { name: 'keywords', content: '关键词' }],
+    ['meta', { property: 'og:title', content: '页面标题' }],
+    ['meta', { property: 'og:description', content: '页面描述' }]
+  ]
+}
+```
 
 ## 🔧 常见问题
 
-### Q: 404页面显示
-**A**: 检查仓库是否为Public，GitHub Pages设置是否正确
+### Q: 404 错误
+**A:** 检查 base 配置和文件路径
 
-### Q: 样式不显示
-**A**: 确保CDN链接可访问，可尝试使用国内CDN
+### Q: 样式不生效
+**A:** 确认 CSS 文件路径和导入语句
 
-### Q: 搜索功能不工作
-**A**: GitHub Pages需要一定时间索引内容，等待几分钟后重试
+### Q: 搜索功能异常
+**A:** 检查搜索配置和内容索引
 
-### Q: 图片不显示
-**A**: 确保图片路径正确，推荐使用相对路径
+### Q: 图片无法显示
+**A:** 确认图片路径，建议放在 `public` 目录
 
-## 🎉 部署完成清单
+## 📈 性能优化
 
-- ✅ GitHub仓库已创建
-- ✅ 代码已推送到main分支
-- ✅ GitHub Pages已启用
-- ✅ 站点可以正常访问
-- ✅ 搜索功能正常
-- ✅ 响应式设计正常
-- ✅ 所有链接可正常点击
+### 图片优化
+- 使用 WebP 格式
+- 压缩图片大小
+- 使用 CDN 加速
 
-## 🌟 优化建议
+### 构建优化
+- 启用代码分割
+- 压缩静态资源
+- 开启 gzip 压缩
 
-1. **SEO优化**: 在index.html中添加更多meta标签
-2. **访问统计**: 配置Google Analytics
-3. **评论系统**: 集成Gitalk或Disqus
-4. **主题定制**: 根据需要调整CSS样式
-5. **PWA支持**: 添加Service Worker支持离线访问
+### 缓存策略
+- 设置合理的缓存头
+- 使用版本号管理资源
+- 配置 Service Worker
+
+## 🎯 部署检查清单
+
+- [ ] 配置正确的 base 路径
+- [ ] 测试所有页面链接
+- [ ] 验证图片和资源加载
+- [ ] 检查移动端适配
+- [ ] 测试搜索功能
+- [ ] 验证 SEO 标签
+- [ ] 检查加载速度
+- [ ] 测试深色模式
+
+---
+
+*🎉 祝你部署顺利！*
